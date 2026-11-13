@@ -14382,20 +14382,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ThirdPersonCamera
   target: {fileID: 1217276831}
-  pivotOffset: {x: 0, y: 1.6, z: 0}
-  distance: 6
-  shoulderOffset: 0
+  pivotOffset: {x: 0, y: 17, z: 0}
+  distance: 30
+  shoulderOffset: 5
   followSmoothTime: 0.05
   mouseSensitivity: 0.1
   stickSensitivity: 150
   invertY: 0
-  minPitch: -30
+  minPitch: -10
   maxPitch: 60
   collisionMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  collisionRadius: 0.25
-  minDistance: 0.5
+  collisionRadius: 2
+  minDistance: 6
 --- !u!1001 &999879335
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30703,6 +30703,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3049910632381628838, guid: 09d0344c223efa14891a8d3b9cc298cf, type: 3}
+      propertyPath: m_Center.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5535459122700404537, guid: 09d0344c223efa14891a8d3b9cc298cf, type: 3}
+      propertyPath: gravity
+      value: -200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5535459122700404537, guid: 09d0344c223efa14891a8d3b9cc298cf, type: 3}
+      propertyPath: moveSpeed
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 5535459122700404537, guid: 09d0344c223efa14891a8d3b9cc298cf, type: 3}
       propertyPath: cameraTransform
       value: 
@@ -30710,6 +30722,18 @@ PrefabInstance:
     - target: {fileID: 8588580357151478914, guid: 09d0344c223efa14891a8d3b9cc298cf, type: 3}
       propertyPath: m_Name
       value: 3D CHARACTER
+      objectReference: {fileID: 0}
+    - target: {fileID: 8969786139201834552, guid: 09d0344c223efa14891a8d3b9cc298cf, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8969786139201834552, guid: 09d0344c223efa14891a8d3b9cc298cf, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8969786139201834552, guid: 09d0344c223efa14891a8d3b9cc298cf, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8969786139201834552, guid: 09d0344c223efa14891a8d3b9cc298cf, type: 3}
       propertyPath: m_LocalPosition.x
