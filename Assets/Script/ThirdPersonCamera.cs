@@ -19,6 +19,12 @@ public class ThirdPersonCamera : MonoBehaviour
     [SerializeField] private float shoulderOffset = 0f;
     [SerializeField] private float followSmoothTime = 0.05f;
 
+    [Header("Follow Mode")]
+    [Tooltip("Camera stays behind the player's back and turns with them.")]
+    [SerializeField] private bool lockBehindPlayer = true;
+    [Tooltip("How fast the camera swings round when the player turns. 0 = instant.")]
+    [SerializeField] private float turnFollowSpeed = 10f;
+
     [Header("Look")]
     [SerializeField] private float mouseSensitivity = 0.1f;
     [SerializeField] private float stickSensitivity = 150f;
@@ -66,7 +72,7 @@ public class ThirdPersonCamera : MonoBehaviour
         if (Gamepad.current != null)
             look += Gamepad.current.rightStick.ReadValue() * stickSensitivity * Time.deltaTime;
 
-        yaw += look.x;
+        if (!lockBehindPlayer) yaw += look.x;   // in locked mode the player's facing sets the yaw
         pitch += invertY ? look.y : -look.y;
         pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
     }
@@ -74,6 +80,15 @@ public class ThirdPersonCamera : MonoBehaviour
     private void LateUpdate()
     {
         if (target == null) return;
+
+        // Stay behind the player's back
+        if (lockBehindPlayer)
+        {
+            float targetYaw = target.eulerAngles.y;
+            yaw = turnFollowSpeed <= 0f
+                ? targetYaw
+                : Mathf.LerpAngle(yaw, targetYaw, 1f - Mathf.Exp(-turnFollowSpeed * Time.deltaTime));
+        }
 
         // Follow the character smoothly
         Vector3 pivot = target.position + pivotOffset;
